@@ -1,0 +1,1 @@
+deepspeed --num_gpus=1 train_qlora.py --train_args_file train_args/qlora/qwen-7b-sft-qlora.json
