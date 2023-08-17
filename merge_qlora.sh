@@ -1,0 +1,1 @@
+python ./script/merge_lora.py
