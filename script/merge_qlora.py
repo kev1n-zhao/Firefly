@@ -8,7 +8,7 @@ import torch
 
 def merge_lora_to_base_model():
     model_name_or_path = 'Qwen/Qwen-7B'
-    adapter_name_or_path = 'output/firefly-qwen-7b'
+    adapter_name_or_path = 'output/firefly-qwen-7b/final'
     save_path = 'output/firefly-qwen-7b-qlora-merge'
 
     config = AutoConfig.from_pretrained(model_name_or_path)
