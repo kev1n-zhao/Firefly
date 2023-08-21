@@ -11,6 +11,7 @@ def main():
     parser.add_argument("--model_name_or_path", type=str, default='Qwen/Qwen-7B', help="")
     args = parser.parse_args()
     model_name_or_path=args.model_name_or_path
+    model_name_or_path="output/firefly-qwen-7b/merged"
     logging.info("loading model: "+model_name_or_path)
     device = 'cuda'
     max_new_tokens = 500    # 每轮对话最多生成多少个token
