@@ -25,11 +25,12 @@ def merge_lora_to_base_model():
     #     torch_dtype=torch.float16,
     #     device_map='auto'
     # )
+    max_memory = {i: max_memory for i in range(1)}
     model = AutoModelForCausalLM.from_pretrained(
         model_name_or_path,
         device_map='auto',
         load_in_4bit=True,
-        max_memory=16,
+        max_memory=max_memory,
         torch_dtype=torch.float16,
         trust_remote_code=True,
         quantization_config=BitsAndBytesConfig(
