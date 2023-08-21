@@ -20,7 +20,8 @@ def merge_lora_to_base_model():
     )
     model = AutoModelForCausalLM.from_pretrained(
         model_name_or_path,
-        batch_size=6,
+        batch_size=1,
+        sequence_length=256,
         trust_remote_code=True,
         low_cpu_mem_usage=True,
         torch_dtype=torch.float16,
