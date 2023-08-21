@@ -26,7 +26,7 @@ def merge_lora_to_base_model():
     #     device_map='auto'
     # )
     model = AutoModelForCausalLM.from_pretrained(
-        model_name_or_path=model_name_or_path,
+        model_name_or_path,
         low_cpu_mem_usage=True,
         load_in_4bit=True,
         device_map='auto',
