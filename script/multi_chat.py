@@ -50,7 +50,11 @@ def merge_lora_to_base_model():
         tokenizer.pad_token_id = tokenizer.eod_id
         tokenizer.bos_token_id = tokenizer.eod_id
         tokenizer.eos_token_id = tokenizer.eod_id
-
+        # 记录所有历史记录
+    if model.config.model_type != 'chatglm':
+        history_token_ids = torch.tensor([[tokenizer.bos_token_id]], dtype=torch.long)
+    else:
+        history_token_ids = torch.tensor([[]], dtype=torch.long)
     device = 'cuda'
     max_new_tokens = 500    # 每轮对话最多生成多少个token
     history_max_len = 1000  # 模型记忆的最大token长度
