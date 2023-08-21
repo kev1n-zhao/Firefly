@@ -1,0 +1,1 @@
+python script/chat/multi_chat.py --model_name_or_path=output/firefly-qwen-7b/merged
