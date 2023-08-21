@@ -22,7 +22,7 @@ def merge_lora_to_base_model():
         model_name_or_path,
         trust_remote_code=True,
         low_cpu_mem_usage=True,
-        torch_dtype=torch.float16,
+        torch_dtype=torch.qint8,
         device_map='auto'
     )
     model = PeftModel.from_pretrained(model, adapter_name_or_path)
