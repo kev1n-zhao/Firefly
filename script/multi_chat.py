@@ -33,7 +33,7 @@ def merge_lora_to_base_model():
         max_memory=max_memory,
         torch_dtype=torch.float16,
         trust_remote_code=True,
-        load_in_8bit=False
+        load_in_8bit=True
 
         # quantization_config=BitsAndBytesConfig(
         #     load_in_4bit=True,
