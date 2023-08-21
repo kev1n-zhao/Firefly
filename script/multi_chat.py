@@ -7,7 +7,7 @@ import torch
 
 
 def merge_lora_to_base_model():
-    model_name_or_path = 'output/firefly-qwen-7b/merged'
+    model_name_or_path = 'Qwen/Qwen-7B'
     adapter_name_or_path = 'output/firefly-qwen-7b/final'
     save_path = 'output/firefly-qwen-7b/merged'
 
@@ -44,6 +44,7 @@ def merge_lora_to_base_model():
         #     llm_int8_has_fp16_weight=False,
         # ),
     )
+    model = PeftModel.from_pretrained(model, adapter_name_or_path)
     # QWenTokenizer比较特殊，pad_token_id、bos_token_id、eos_token_id均为None。eod_id对应的token为<|endoftext|>
     if tokenizer.__class__.__name__ == 'QWenTokenizer':
         tokenizer.pad_token_id = tokenizer.eod_id
