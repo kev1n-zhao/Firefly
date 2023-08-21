@@ -1,1 +1,1 @@
-python ./script/merge_lora.py
+python ./script/merge_qlora.py
