@@ -3,14 +3,14 @@ import torch
 import argparse
 
 def main():
-    model_name = 'YeungNLP/firefly-baichuan-13b'
+    model_name_or_path = 'YeungNLP/firefly-baichuan-13b'
     # model_name = 'YeungNLP/firefly-baichuan-7b'
     # model_name = 'YeungNLP/firefly-ziya-13b'
     # model_name = 'YeungNLP/firefly-bloom-7b1'
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_name", type=str, default='Qwen/Qwen-7B', help="")
+    parser.add_argument("--model_name_or_path", type=str, default='Qwen/Qwen-7B', help="")
     args = parser.parse_args()
-    model_name=args.model_name
+    model_name_or_path=args.model_name_or_path
     device = 'cuda'
     max_new_tokens = 500    # 每轮对话最多生成多少个token
     history_max_len = 1000  # 模型记忆的最大token长度
@@ -20,14 +20,14 @@ def main():
 
     # 加载模型
     model = AutoModelForCausalLM.from_pretrained(
-        model_name,
+        model_name_or_path,
         trust_remote_code=True,
         low_cpu_mem_usage=True,
         torch_dtype=torch.float16,
         device_map='auto'
     ).to(device).eval()
     tokenizer = AutoTokenizer.from_pretrained(
-        model_name,
+        model_name_or_path,
         trust_remote_code=True,
         # llama不支持fast
         use_fast=False if model.config.model_type == 'llama' else True
