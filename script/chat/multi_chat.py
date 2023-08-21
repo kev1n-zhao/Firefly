@@ -1,6 +1,6 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
-import argparse
+import argparse,logging
 
 def main():
     model_name_or_path = 'YeungNLP/firefly-baichuan-13b'
@@ -11,6 +11,7 @@ def main():
     parser.add_argument("--model_name_or_path", type=str, default='Qwen/Qwen-7B', help="")
     args = parser.parse_args()
     model_name_or_path=args.model_name_or_path
+    logging.info("loading model: "+model_name_or_path)
     device = 'cuda'
     max_new_tokens = 500    # 每轮对话最多生成多少个token
     history_max_len = 1000  # 模型记忆的最大token长度
